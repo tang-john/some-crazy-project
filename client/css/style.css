@@ -1,0 +1,30 @@
+.fa {
+    padding-right: 10px;
+}
+.main-body{
+    background-color: #f1f4f7;
+}
+.main-center {
+    padding-left: 20px;
+}
+.main-menubar {
+    padding-top: 10px;
+    margin-left: 10px;
+}
+.sideBarLeft {
+    height: 1500px;
+    background-color: #2d3c4b;
+    padding-left: 20px;
+    color: #abb1b7;
+}
+.sideBarLeft .header {
+    padding-top: 30px !important;
+}
+
+.sideBarLeft .nav a {
+    color: #abb1b7;
+}
+
+.sideBarLeft .nav .selected a {
+    color: #fff;
+}
