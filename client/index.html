@@ -60,11 +60,23 @@
     <script src="/bundle.js"></script>
     <script>
       $(document).ready(function() {
-        if($('#assetTable')) {
-          $('#assetTable').DataTable( {
-            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
-          } );
-        }
+          if($('#assetTable')) {
+              $('#assetTable').DataTable( {
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
+              } );
+          }
+
+          $('.editDataLink').click(function(event){
+              event.preventDefault();
+              var target = $(this).attr('href');
+              target += "";
+          });
+
+          $('.deleteDataLink').click(function(event){
+              event.preventDefault();
+              var target = $(this).attr('href');
+              target += "";
+          });
       });
     </script>
   </body>

@@ -1,6 +1,14 @@
 .fa {
     padding-right: 10px;
 }
+.editDataLink {
+   padding-left: 10px;
+   padding-right: 20px;
+    color: #000;
+}
+.deleteDataLink {
+    color: #000;
+}
 .main-body{
     background-color: #f1f4f7;
 }
