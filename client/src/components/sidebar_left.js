@@ -16,8 +16,8 @@ export default class Main extends Component {
                 <i className="fa fa-cogs" aria-hidden="true"></i>Admin <span className="caret"></span>
               </a>
               <ul className="dropdown-menu">
-                  <li><Link to={"admin-assets"}><i className="fa fa-university" aria-hidden="true"></i> Assets</Link></li>
-                  <li><Link to={"admin-users"}><i className="fa fa-user" aria-hidden="true"></i> Users</Link></li>
+                  <li><a href="/admin-assets"><i className="fa fa-university" aria-hidden="true"></i> Assets</a></li>
+                  <li><a href="/admin-users"><i className="fa fa-user" aria-hidden="true"></i> Users</a></li>
                   <li role="separator" className="divider"></li>
                   <li><Link to={"#"}><i className="fa fa-bar-chart" aria-hidden="true"></i> Separated link</Link></li>
               </ul>
