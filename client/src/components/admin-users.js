@@ -2,24 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userGetAll } from '../actions/index';
 import { bindActionCreators } from 'redux';
-
-//import { Link } from 'react-router';
 import MainMenuBar from './main-menubar';
-
-
-
-
-
 
 export default class AdminUsers extends Component {
 
-
   componentWillMount() {
-    var props = this.props;
-
     this.props.userGetAll();
   }
-
 
   render() {
     return (
@@ -100,21 +89,16 @@ export default class AdminUsers extends Component {
   }
 }
 
-
-
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
-  var jt = "johntang2";
-
   return {
     users: state.userReducer.users
   };
 }
 
 // Anything returned from this function will end up as props
-// on the BookList container
 function mapDispatchToProps(dispatch) {
-  // Whenever selectBook is called, the result should be passed to all of our reducers
+  // Whenever userGetAll is called, the result should be passed to all of our reducers
   return bindActionCreators({ userGetAll: userGetAll }, dispatch);
 }
 
