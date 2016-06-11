@@ -77,7 +77,6 @@ export default class AdminUsers extends Component {
             <td>{user.password}</td>
             <td>{user.gender}</td>
             <td>{user.dob}</td>
-            <td>{user._id}</td>
             <td>
               <a className="editDataLink" href="4"><i className="fa fa-pencil" aria-hidden="true"></i> Edit</a>
               <a className="deleteDataLink" href="3"><i className="fa fa-minus-square" aria-hidden="true"></i> Delete</a>
