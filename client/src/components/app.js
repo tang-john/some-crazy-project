@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import NavBar from './navbar';
 import SideBarLeft from './sidebar_left';
-import SideBarRight from './sidebar_right';
+//import SideBarRight from './sidebar_right';
 //import Main from './main';
 
 export default class App extends Component {
@@ -15,13 +15,13 @@ export default class App extends Component {
         <div className=" container-main">
           <div className="row">
             <div className="col-md-2" id="colLeft"> <SideBarLeft /> </div>
-            <div className="col-md-8" id="colMain"> {this.props.children} </div>
-            <div className="col-md-2" id="colRight"> <SideBarRight /> </div>
+            <div className="col-md-10" id="colMain"> {this.props.children} </div>
+            {
+              /* <div className="col-md-2" id="colRight"> <SideBarRight /> </div> */
+            }
           </div>
         </div>
       </div>
     );
   }
-
-
 }

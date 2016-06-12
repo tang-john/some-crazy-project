@@ -13,7 +13,7 @@ export default class MainMenuBar extends Component {
                         <li><a href="#colLeft" className="toggle btn">Toggle Display: Left Menu Bar</a></li>
                         <li className="divider"></li>
 
-                        <li><a href="#colRight" className="toggle btn">Toggle Display: Right Menu Bar</a></li>
+                        <li><a href="#pageColRight" className="toggle btn">Toggle Display: Right Menu Bar</a></li>
                         <li className="divider"></li>
 
                         <li><a href="#">Account Settings <span className="glyphicon glyphicon-cog pull-right"></span></a></li>

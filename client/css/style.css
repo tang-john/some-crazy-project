@@ -36,3 +36,13 @@
 .sideBarLeft .nav .selected a {
     color: #fff;
 }
+
+.userDetail {
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+}
+
+.userDetail .input-group {
+    padding-top: 10px;
+}

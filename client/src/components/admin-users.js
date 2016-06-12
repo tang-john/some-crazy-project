@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { userGetAll } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import MainMenuBar from './main-menubar';
+import AdminUserDetail from './admin-user-detail';
 
 export default class AdminUsers extends Component {
 
   componentWillMount() {
     this.props.userGetAll();
+    this.setState( {id: 1, firstname: "Joe", lastname: "Smith", username: "jsmith", password:"Brea2010", gender: "male", dob: "1975-09-12"});
   }
 
   render() {
@@ -15,12 +17,23 @@ export default class AdminUsers extends Component {
       <div className="main-center">
         <div className="row"> <MainMenuBar /> </div>
         <div className="row main-body">
-          <div className="col-md-12">
+          <div className="col-md-10" id="pageColMain">
             <div className="panel panel-default">
               <div className="panel-heading">Administer Users</div>
               <div>{this.renderTable()}
               </div>
             </div>
+          </div>
+          <div className="col-md-2" id="pageColRight">
+              <AdminUserDetail
+                id={this.state.id}
+                firstname={this.state.firstname}
+                lastname={this.state.lastname}
+                username={this.state.username}
+                password={this.state.password}
+                gender={this.state.gender}
+                dob={this.state.dob}
+              />
           </div>
         </div>
       </div>
@@ -58,6 +71,7 @@ export default class AdminUsers extends Component {
         </table>
     )
   }
+
   renderUsers() {
     var users = this.props.users;
 
@@ -68,9 +82,11 @@ export default class AdminUsers extends Component {
         </tr>
       );
     } else {
+      var uri;
       return this.props.users.map((user) => {
+        uri = `?id=${user._id}&firstname=${user.firstname}&lastname=${user.username}&username=${user.username}&password=${user.password}&gender=${user.gender}&dob=${user.dob}`;
         return (
-          <tr key={user._id}>
+          <tr key={user._id} >
             <td>{user.firstname}</td>
             <td>{user.lastname}</td>
             <td>{user.username}</td>
@@ -78,13 +94,19 @@ export default class AdminUsers extends Component {
             <td>{user.gender}</td>
             <td>{user.dob}</td>
             <td>
-              <a className="editDataLink" href="4"><i className="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-              <a className="deleteDataLink" href="3"><i className="fa fa-minus-square" aria-hidden="true"></i> Delete</a>
+              <a className="editDataLink" href={uri} onClick={this.setUserDetail}><i className="fa fa-pencil" aria-hidden="true"></i></a>
+              <a className="deleteDataLink" href="3"><i className="fa fa-trash" aria-hidden="true"></i></a>
             </td>
           </tr>
         );
       });
     }
+  }
+
+  setUserDetail(event) {
+    event.preventDefault();
+    var href = event.currentTarget.href;
+    alert(`href: ${href}`);
   }
 }
 

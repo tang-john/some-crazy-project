@@ -20,6 +20,10 @@ Babel
 ## MongoDB ##
 
 mongo localhost:27017/portfolio
+show collections
+show databases
+db.user.find()
+db.user.drop()
 
 
 ### Relationships ###
@@ -62,14 +66,14 @@ db.user.insert(
 db.user.insert(
     {
       _id: 2,
-      firstname: "John",
-      middlename: "Huu",
-      lastname: "Tang",
-      username: "jtang",
-      password: "Ready2go",
-      url: "http://jtang.edu",
-      gender: "male",
-      dob: null
+      firstname: "Melinda",
+      middlename: "Mary",
+      lastname: "Gonzales",
+      username: "mgonzales",
+      password: "Too-Hot-For-U",
+      url: "http://melinda1098.ucla.edu",
+      gender: "female",
+      dob: '1981-09-19'
     }
 );
 
