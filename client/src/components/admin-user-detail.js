@@ -62,12 +62,26 @@ class AdminUserDetail extends Component {
   }
 
   handleChange(event) {
-    var jt = "johntang4";
     var value = event.target.value;
     var id = event.target.id;
 
     if(id === "firstname") {
        this.setState({firstname : value});
+
+    } else if(id === "lastname") {
+      this.setState({lastname : value});
+
+    } else if(id === "username") {
+      this.setState({username : value});
+
+    } else if(id === "password") {
+      this.setState({password : value});
+
+    } else if(id === "gender") {
+      this.setState({gender : value});
+
+    } else if(id === "dob") {
+      this.setState({dob : value});
     }
     
   }

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f822bd78-cbbe-4bd9-8034-f5185235a0e8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css" afterPath="$PROJECT_DIR$/client/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/admin-user-detail.js" afterPath="$PROJECT_DIR$/client/src/components/admin-user-detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/admin-users.js" afterPath="$PROJECT_DIR$/client/src/components/admin-users.js" />
     </list>
     <ignored path="REACT-stocks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +48,8 @@
       <file leaf-file-name="admin-user-detail.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/components/admin-user-detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="56" column="116" selection-start-line="56" selection-start-column="116" selection-end-line="56" selection-end-column="116" />
+            <state relative-caret-position="860">
+              <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -302,15 +299,15 @@
       <workItem from="1465854925788" duration="1148000" />
       <workItem from="1466002452566" duration="599000" />
       <workItem from="1466202411474" duration="2000" />
-      <workItem from="1466276092153" duration="11028000" />
+      <workItem from="1466276092153" duration="11817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89579000" />
+    <option name="totallyTimeSpent" value="90368000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24270834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -591,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/admin-user-detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="56" column="116" selection-start-line="56" selection-start-column="116" selection-end-line="56" selection-end-column="116" />
+        <state relative-caret-position="860">
+          <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
           <folding />
         </state>
       </provider>
