@@ -9,7 +9,8 @@ export default class AdminUsers extends Component {
 
   componentWillMount() {
     this.props.userGetAll();
-    this.setState( {id: 1, firstname: "Joe", lastname: "Smith", username: "jsmith", password:"Brea2010", gender: "male", dob: "1975-09-12"});
+    //this.setState( {id: 1, firstname: "Joe", lastname: "Smith", username: "jsmith", password:"Brea2010", gender: "male", dob: "1975-09-12"});
+    this.setState( {id: null, firstname: null, lastname: null, username: null, password: null, gender: null, dob: null});
   }
 
   render() {
@@ -20,8 +21,7 @@ export default class AdminUsers extends Component {
           <div className="col-md-10" id="pageColMain">
             <div className="panel panel-default">
               <div className="panel-heading">Administer Users</div>
-              <div>{this.renderTable()}
-              </div>
+              <div>{this.renderTable()}</div>
             </div>
           </div>
           <div className="col-md-2" id="pageColRight">
@@ -94,7 +94,7 @@ export default class AdminUsers extends Component {
             <td>{user.gender}</td>
             <td>{user.dob}</td>
             <td>
-              <a className="editDataLink" href={uri} onClick={this.setUserDetail}><i className="fa fa-pencil" aria-hidden="true"></i></a>
+              <i className="fa fa-pencil" aria-hidden="true" onClick={() => this.setUserDetail(user._id, user.firstname, user.lastname, user.username, user.password, user.gender, user.dob)} ></i>
               <a className="deleteDataLink" href="3"><i className="fa fa-trash" aria-hidden="true"></i></a>
             </td>
           </tr>
@@ -103,12 +103,27 @@ export default class AdminUsers extends Component {
     }
   }
 
-  setUserDetail(event) {
-    event.preventDefault();
-    var href = event.currentTarget.href;
-    alert(`href: ${href}`);
+
+
+  setUserDetail(_id, _firstname, _lastname, _username, _password, _gender, _dob) {
+    this.setState( {id: _id, firstname: _firstname, lastname: _lastname, username: _username, password: _password, gender: _gender, dob: _dob});
   }
+
+  parseHref(href) {
+    let pos = href.indexOf("?");
+    let obj = null;
+
+    if(pos > -1) {
+      let tmpStr = href.substring(pos);
+      let jt = "johntang15";
+      obj = tmpStr.split("&");
+    }
+    return obj;
+
+  }
+
 }
+
 
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
