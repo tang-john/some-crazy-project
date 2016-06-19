@@ -23,6 +23,7 @@ app.get('/searchFolderEmails', email.searchFolderEmails);
 app.get('/import', fileImport.import);
 */
 app.get('/userGetAll', user.getAll);
+app.get('/userSave', user.save);
 
 app.listen(config.port);
 console.log('Listening on port ' + config.port + '...');

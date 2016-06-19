@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 
 class AdminUserDetail extends Component {
@@ -55,6 +56,11 @@ class AdminUserDetail extends Component {
           <div className="input-group">
             <label htmlFor="dob">DOB</label>
             <input type="text" className="form-control" id="dob" value={this.state.dob} onChange={this.handleChange} aria-describedby="basic-addon1" />
+          </div>
+          <div className="adminUserSave">
+            <Link  to="admin-users-save">
+              <i className="fa fa-floppy-o  fa-2x" aria-hidden="true"></i> Save
+            </Link>
           </div>
         </div>
       );

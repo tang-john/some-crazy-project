@@ -1,3 +1,9 @@
+.adminUserSave i.fa-floppy-o {
+    padding-top: 10px;
+}
+.adminUsersSave a {
+    text-decoration: none;
+}
 .fa {
     padding-right: 10px;
 }
@@ -49,3 +55,4 @@
 .userDetail .input-group {
     padding-top: 10px;
 }
+

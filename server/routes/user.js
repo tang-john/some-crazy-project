@@ -17,7 +17,7 @@ var Message = mongoose.model('Message', MessageSchema);
 MessageSchema.methods.findByFolder = function (cb) {
     return this.model('Message').find({ folder: this.folder }, cb);
 }
-var STR_DOT = ".";
+
 
 MongoClient.connect('mongodb://localhost:27017/portfolio', function(err, db) {
     this.db = db;
@@ -36,11 +36,21 @@ MongoClient.connect('mongodb://localhost:27017/portfolio', function(err, db) {
     */
 });
 
+
+/*
+ * mongoSave will do an insert if _id is null, otherwise an update is performed.
+ */
+var mongoSave = function(collectionName, data, callback) {
+    this.db.collection(collectionName, function(err, collection) {
+        collection.save(data, {w:1}, function(err, result) {
+            callback(err, result);
+        });
+    });
+}
+
 exports.getAll = function(req, res) {
 
-
     //res.jsonp({"err": "folder is missing from the uri"});
-
     var collectionName = "user";
 
     this.db.collection(collectionName, function(err, collection) {
@@ -49,8 +59,25 @@ exports.getAll = function(req, res) {
             res.jsonp(items);
         });
     });
-
 };
+
+exports.save = function(req, res) {
+    var _id = parseInt(req.query.id);
+    var _firstname = req.query.firstname;
+    var _lastname = req.query.lastname;
+    var _middlename = req.query.middlename;
+    var _username = req.query.username;
+    var _password = req.query.password;
+    var _gender = req.query.gender;
+    var _dob = req.query.dob;
+
+    var data = {"_id": _id, "firstname": _firstname, lastname: _lastname, middlename: _middlename, username: _username, password: _password, gender: _gender, dob: _dob};
+    var collectionName = "user";
+    mongoSave(collectionName, data, function(err, result){
+        var msg = (err == null) ? "Successfully saved to MongoDB" : "Error saving to MongoDB";
+        res.jsonp({message: msg, result: result});
+    });
+}
 
 /*
 exports.findByCollectionId = function(req, res) {
@@ -80,7 +107,7 @@ exports.findByManager = function(req, res) {
 };
 */
 
-
+/*
 exports.find = function(req, res) {
 
     var collectionName = req.query["name"];
@@ -115,7 +142,9 @@ exports.find = function(req, res) {
         findCollections(db, res);
     }
 };
+*/
 
+/*
 exports.getEmailDetail = function(req, res) {
     var collectionName = req.query["collection"];
     var _id = req.query["_id"];
@@ -144,8 +173,10 @@ exports.getEmailDetail = function(req, res) {
         });
     };
 };
+*/
 
 //Need to finish JOHN TODO
+/*
 exports.searchFolderEmails = function(req, res) {
     var collectionName = req.query["name"];
     var folderPath = req.query["path"];
@@ -186,36 +217,37 @@ exports.searchFolderEmails = function(req, res) {
             });
 
 
-            /*
-            collection.find({'folder' : folderPath}).toArray(function(err, docs) {
-                if(err) {
-                    res.jsonp({'err' : err});
-                } else {
-                    aray = docs.map(function(doc) {
-                        return {'_id': doc._id, 'from': doc.senderName, 'deliveryTime' : doc.deliveryTime, 'subject': doc.subject};
-                    });
-                    res.jsonp(aray);
-                }
-            });
-            */
+
+           // collection.find({'folder' : folderPath}).toArray(function(err, docs) {
+           //     if(err) {
+           //         res.jsonp({'err' : err});
+           //     } else {
+           //         aray = docs.map(function(doc) {
+           //             return {'_id': doc._id, 'from': doc.senderName, 'deliveryTime' : doc.deliveryTime, 'subject': doc.subject};
+           //         });
+           //         res.jsonp(aray);
+           //     }
+           // });
+
 
         });
 
-        /*
-         this.db.collection(id, function(err, collection) {
+
+        // this.db.collection(id, function(err, collection) {
          // Retrieve all the documents in the collection
-         var aray =  collection.find().toArray(function(err, documents) {
-         assert.equal(1, documents.length);
-         assert.deepEqual([1, 2, 3], documents[0].b);
-         });
-         res.jsonp(aray);
-         });
-         */
+        // var aray =  collection.find().toArray(function(err, documents) {
+        // assert.equal(1, documents.length);
+        // assert.deepEqual([1, 2, 3], documents[0].b);
+        // });
+        // res.jsonp(aray);
+        // });
+
 
     };
 
 };
-
+*/
+/*
 exports.getFolderEmails = function(req, res) {
     var collectionName = req.query["collection"];
     var folderPath = req.query["folderPath"];
@@ -243,21 +275,23 @@ exports.getFolderEmails = function(req, res) {
 
         });
 
-        /*
-        this.db.collection(id, function(err, collection) {
+
+        // this.db.collection(id, function(err, collection) {
             // Retrieve all the documents in the collection
-            var aray =  collection.find().toArray(function(err, documents) {
-                assert.equal(1, documents.length);
-                assert.deepEqual([1, 2, 3], documents[0].b);
-            });
-            res.jsonp(aray);
-        });
-        */
+        //    var aray =  collection.find().toArray(function(err, documents) {
+        //        assert.equal(1, documents.length);
+        //        assert.deepEqual([1, 2, 3], documents[0].b);
+        //    });
+        //    res.jsonp(aray);
+        //});
+
 
     };
 
 };
+*/
 
+/*
 var findCollections = function(db, res) {
     //Find all collections in the database.
     this.db.collections(function(err, collections){
@@ -272,22 +306,23 @@ var findCollections = function(db, res) {
             return obj.name != "system.indexes";
         })
 
-        /*
-         console.log('params: ' + JSON.stringify(req.params));
-         console.log('body: ' + JSON.stringify(req.body));
-         console.log('query: ' + JSON.stringify(req.query));
-         console.log('req.query.callback: ' + req.query.callback);
 
-         res.header('Content-type','application/json');
-         res.header('Charset','utf8');
-         res.send(req.query.callback + '('+ JSON.stringify(obj) + ');');
-         */
+        // console.log('params: ' + JSON.stringify(req.params));
+        // console.log('body: ' + JSON.stringify(req.body));
+        // console.log('query: ' + JSON.stringify(req.query));
+        // console.log('req.query.callback: ' + req.query.callback);
+
+        // res.header('Content-type','application/json');
+        // res.header('Charset','utf8');
+        // res.send(req.query.callback + '('+ JSON.stringify(obj) + ');');
+
         //res.json(aray);
 
         res.jsonp(aray);
 
     });
 };
+*/
 
 /*
 var findCollectionDocs = function(res, db, collectionName, sortOrder) {
@@ -300,7 +335,7 @@ var findCollectionDocs = function(res, db, collectionName, sortOrder) {
 };
 */
 
-
+/*
 var findCollectionBySearchTerm = function(res, db, collectionName, searchTerm) {
     //Find all documents for a particular collection as identified by the collectionName variable.
     this.db.collection(collectionName, function(err, collection) {
@@ -314,7 +349,7 @@ var findCollectionBySearchTerm = function(res, db, collectionName, searchTerm) {
 
     });
 };
-
+*/
 
 /*
 var findCollectionDocById = function(res, db, collectionName, _id) {
@@ -328,12 +363,12 @@ var findCollectionDocById = function(res, db, collectionName, _id) {
 };
 */
 
-
+/*
 var getCorrectFolderName = function(path, folderName) {
-    /* path = "archive oracle projects.projects.amex.admin
+    // path = "archive oracle projects.projects.amex.admin
        folderName = "archive oracle projects.projects"
        return amex
-    */
+    //
 
     var strReplace = folderName + STR_DOT;
     var str = path.replace(strReplace, "");
@@ -345,7 +380,9 @@ var getCorrectFolderName = function(path, folderName) {
 
     return str;
 };
+*/
 
+/*
 var getUniqueFolders = function(res, folderName, err, coll) {
 
     var aray = null;
@@ -392,12 +429,13 @@ var getUniqueFolders = function(res, folderName, err, coll) {
         res.jsonp({"err": ""});
     }
 }
-
+*/
 
 
 /*
  * Create test data
  */
+/*
 var populateCollOracle = function() {
 
     console.log("Populating oracle collection...");
@@ -413,12 +451,13 @@ var populateCollOracle = function() {
     });
 
 };
-
+*/
 
 /*
  * Create test data
  */
 
+/*
 var populateCollOracleTech = function() {
  
     console.log("Populating oracleTech collection...");
@@ -434,3 +473,5 @@ var populateCollOracleTech = function() {
     });
  
 };
+
+*/

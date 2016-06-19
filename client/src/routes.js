@@ -11,5 +11,6 @@ export default (
     <IndexRoute component={Home} />
     <Route path='admin-assets' component={AdminAssets} />
     <Route path='admin-users' component={AdminUsers} />
+    <Route path='admin-users-save' component={AdminUsers} />
   </Route>
 );
