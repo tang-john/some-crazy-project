@@ -1,6 +1,9 @@
 .adminUserSave i.fa-floppy-o {
     padding-top: 10px;
 }
+.adminUserSave i.fa-times {
+    padding-left: 10px;
+}
 .adminUsersSave a {
     text-decoration: none;
 }
