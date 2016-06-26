@@ -19,7 +19,7 @@ class AdminUser extends Component {
     this.state = {firstnameClass: "", lastnameClass: "", usernameClass: "" , passwordClass: "", genderClass: "", dobClass: ""};
     this.handleChange = this.handleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.saveUser = this.saveUser.bind(this);
+    this.handleSave = this.handleSave.bind(this);
 
   }
 
@@ -54,7 +54,7 @@ class AdminUser extends Component {
       return (
         <div>
           <h4>User Detail</h4>
-          <form >
+          <form id="userform">
             <div className="input-group">
               <label htmlFor="firstname">First Name</label>
               <input type="text" className={`form-control ${this.state.firstnameClass}`} id="firstname" defaultValue={this.state.firstname} value={this.state.firstname} onChange={this.handleChange}  aria-describedby="basic-addon1" />
@@ -85,7 +85,7 @@ class AdminUser extends Component {
               <input type="text" className={`form-control ${this.state.dobClass}`} id="dob" defaultValue={this.state.dob} value={this.state.dob} onChange={this.handleChange} aria-describedby="basic-addon1" />
             </div>
             <div className="adminUserSave">
-              <a  to="admin-users-save">
+              <a  href="www.yahoo.com" onClick={this.handleSave} >
                 <i className="fa fa-floppy-o  fa-2x" aria-hidden="true"></i> Save
               </a>
               <a  href="#" onClick={this.handleCancel}>
@@ -168,8 +168,21 @@ class AdminUser extends Component {
     
   }
 
-  saveUser(event) {
 
+  handleSave(event) {
+    var frm = document.getElementById("userform");
+    var id = frm.elements.id.value;
+    var firstname = frm.elements.firstname.value;
+    var middlename = frm.elements.middlename.value;
+    var lastname = frm.elements.lastname.value;
+    var username = frm.elements.username.value;
+    var password = frm.elements.password.value;
+    var gender = frm.elements.gender.value;
+    var dob = frm.elements.dob.value;
+
+
+    this.prop.save(id, firstname, middlename, lastname, username, password, gender, dob);
+    event.preventDefault();
   }
 
 }
@@ -187,7 +200,7 @@ function mapStateToProps(state) {
 // Anything returned from this function will end up as props
 function mapDispatchToProps(dispatch) {
   // Whenever userSave is called, the result should be passed to all of our reducers
-  return bindActionCreators({ userSave: userSave }, dispatch);
+  return bindActionCreators({ save: userSave }, dispatch);
 }
 
 

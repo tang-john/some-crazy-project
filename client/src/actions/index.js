@@ -15,8 +15,9 @@ export function userGetAll() {
 }
 
 
-export function userSave() {
-  const request = axios.get(`${ROOT_URL}/${USER_SAVE}`);
+export function userSave(id, firstname, middlename, lastname, username, password, gender, dob) {
+  const url = `${ROOT_URL}/${USER_SAVE}?id=${id}&firstname=${firstname}&middlename=${middlename}&lastname=${lastname}&username=${username}&password=${password}&gender=${gender}&dob=${dob}`;
+  const request = axios.get(url);
 
   return {
     type: USER_SAVE,
