@@ -85,9 +85,9 @@ class AdminUser extends Component {
               <input type="text" className={`form-control ${this.state.dobClass}`} id="dob" defaultValue={this.state.dob} value={this.state.dob} onChange={this.handleChange} aria-describedby="basic-addon1" />
             </div>
             <div className="adminUserSave">
-              <Link  to="admin-users-save">
+              <a  to="admin-users-save">
                 <i className="fa fa-floppy-o  fa-2x" aria-hidden="true"></i> Save
-              </Link>
+              </a>
               <a  href="#" onClick={this.handleCancel}>
                 <i className="fa fa-times fa-2x" aria-hidden="true"></i> Cancel
               </a>
@@ -100,9 +100,14 @@ class AdminUser extends Component {
   }
 
   handleCancel(event) {
-    this.setState({firstname: null, firstnameClass: "", middlename: null, middleNameClass: "",  lastname: null, lastnameClass: "",
-                   username: null, usernameClass: "", password: null, passwordClass: "",
-                   gender: null, genderClass: "",  dob: null, dobClass: ""});
+    event.preventDefault()
+    this.setState({firstname: null,  firstnameClass: "",
+                   middlename: null, middlenameClass: "",
+                   lastname: null,   lastnameClass: "",
+                   username: null,   usernameClass: "",
+                   password: null,   passwordClass: "",
+                   gender: null,     genderClass: "",
+                   dob: null,        dobClass: ""});
   }
 
   handleChange(event) {
