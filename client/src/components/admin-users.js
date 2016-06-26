@@ -3,17 +3,20 @@ import { connect } from 'react-redux';
 import { userGetAll } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import MainMenuBar from './main-menubar';
-import AdminUserDetail from './admin-user-detail';
+import AdminUser from './admin-user';
 
 export default class AdminUsers extends Component {
 
   componentWillMount() {
+    var jt = "jtang01";
     this.props.userGetAll();
-    //this.setState( {id: 1, firstname: "Joe", lastname: "Smith", username: "jsmith", password:"Brea2010", gender: "male", dob: "1975-09-12"});
-    this.setState( {id: null, firstname: null, lastname: null, username: null, password: null, gender: null, dob: null});
+    //this.setState( {id: 1, firstname: "Joe", middlename: "Huu", lastname: "Smith", username: "jsmith", password:"Brea2010", gender: "male", dob: "1975-09-12"});
+    this.setState( {id: null, firstname: null, middlename: null, lastname: null, username: null, password: null, gender: null, dob: null});
   }
 
   render() {
+    var jt = "jtang01";
+
     return (
       <div className="main-center">
         <div className="row"> <MainMenuBar /> </div>
@@ -25,14 +28,22 @@ export default class AdminUsers extends Component {
             </div>
           </div>
           <div className="col-md-2" id="pageColRight">
-              <AdminUserDetail
+              <AdminUser
                 id={this.state.id}
                 firstname={this.state.firstname}
+                firstnameClass="notModified"
+                middlename={this.state.middlename}
+                middlenameClass="notModified"
                 lastname={this.state.lastname}
+                lastnameClass="notModified"
                 username={this.state.username}
+                usernameClass="notModified"
                 password={this.state.password}
+                passwordClass="notModified"
                 gender={this.state.gender}
+                genderClass="notModified"
                 dob={this.state.dob}
+                dobClass="notModified"
               />
           </div>
         </div>
@@ -46,6 +57,7 @@ export default class AdminUsers extends Component {
           <thead>
           <tr>
             <th>First Name</th>
+            <th>Middle Name</th>
             <th>Last Name</th>
             <th>Username</th>
             <th>Password</th>
@@ -57,6 +69,7 @@ export default class AdminUsers extends Component {
           <tfoot>
           <tr>
             <th>First Name</th>
+            <th>Middle Name</th>
             <th>Last Name</th>
             <th>Username</th>
             <th>Password</th>
@@ -88,13 +101,14 @@ export default class AdminUsers extends Component {
         return (
           <tr key={user._id} >
             <td>{user.firstname}</td>
+            <td>{user.middlename}</td>
             <td>{user.lastname}</td>
             <td>{user.username}</td>
             <td>{user.password}</td>
             <td>{user.gender}</td>
             <td>{user.dob}</td>
             <td>
-              <i className="fa fa-pencil" aria-hidden="true" onClick={() => this.setUserDetail(user._id, user.firstname, user.lastname, user.username, user.password, user.gender, user.dob)} ></i>
+              <i className="fa fa-pencil" aria-hidden="true" onClick={() => this.setUserDetail(user._id, user.firstname, user.middlename, user.lastname, user.username, user.password, user.gender, user.dob)} ></i>
               <a className="deleteDataLink" href="3"><i className="fa fa-trash" aria-hidden="true"></i></a>
             </td>
           </tr>
@@ -103,23 +117,8 @@ export default class AdminUsers extends Component {
     }
   }
 
-
-
-  setUserDetail(_id, _firstname, _lastname, _username, _password, _gender, _dob) {
-    this.setState( {id: _id, firstname: _firstname, lastname: _lastname, username: _username, password: _password, gender: _gender, dob: _dob});
-  }
-
-  parseHref(href) {
-    let pos = href.indexOf("?");
-    let obj = null;
-
-    if(pos > -1) {
-      let tmpStr = href.substring(pos);
-      let jt = "johntang15";
-      obj = tmpStr.split("&");
-    }
-    return obj;
-
+  setUserDetail(_id, _firstname, _middlename, _lastname, _username, _password, _gender, _dob) {
+    this.setState( {id: _id, middlename:  _middlename, firstname: _firstname, lastname: _lastname, username: _username, password: _password, gender: _gender, dob: _dob});
   }
 
 }
@@ -127,8 +126,9 @@ export default class AdminUsers extends Component {
 
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
+  var jt = "jtang01";
   return {
-    users: state.userReducer.users
+    users: state.usersReducer.users
   };
 }
 
